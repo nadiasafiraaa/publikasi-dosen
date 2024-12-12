@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publikasi Dosen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h1, header h2 {
+            margin: 0;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #0f766e;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-bar button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+        }
+        .publication-list {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .publication-item {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .publication-item h2 {
+            font-size: 16px;
+            margin: 0 0 5px 0;
+        }
+        .publication-item p {
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logoUIN.png" alt="University Logo">
+                <div>
+                    <h1>PRODI TEKNOLOGI INFORMASI</h1>
+                    <h2>FAKULTAS SAINS DAN TEKNOLOGI</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <nav style="margin-bottom: 10px;">
+            <a href="index.html" style="text-decoration: none; color: #000;">Home</a> 
+            <span style="color: #000;">/</span> 
+            <a href="pub_dosen.html" style="text-decoration: none; color: #000;">Publikasi Dosen</a>
+        </nav>
+        <h1><a href="malahayati.html" style="text-decoration: none; color: inherit;">Malahayati, M.T.</a></h1>
+        <div class="search-bar">
+            <input id="searchInput" type="text" placeholder="Search by title or author...">
+            <button onclick="filterPublications()"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="publicationList" class="publication-list">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </main>
+    <script>
+        const publications = [
+            { 
+                title: "IMPLEMENTASI ALGORITMA NAIVE BAYES DAN RANDOM FOREST DALAM MEMPREDIKSI PRESTASI AKADEMIK MAHASISWA UNIVERSITAS ISLAM NEGERI AR-RANIRY BANDA ACEH", 
+                authors: "Bustami Yusuf, Muthmainna Qalbi, Basrul, Ima Dwitawati, Malahayati, Mega Ellyadi", 
+                year: 2020,
+                url: "https://drive.google.com/file/d/1-dOBz3st9Nl-RMENKNyBQ5e85JyxgLxp/view?usp=drive_link"
+            },
+            { 
+                title: "Penerapan Problem Based Learning Untuk Meningkatkan Hasil Belajar Peserta Didik Pada Mata Pelajaran Elektronika Mikroprosesor Di Kelas X SMK Negeri 5 Telkom", 
+                authors: "Malahayati, Hadi Kurniawan, Rahmatul Ummiya, Nurhayati", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/1-N6xXgBzXtB1vZa8qQlmnefyJ9ywwJvx/view?usp=drive_link"
+            },
+            { 
+                title: "PENERAPAN APLIKASI KAMUS EKONOMI SYARI’AH BERBASIS ANDROID STUDI KASUS DI FAKULTAS EKONOMI DAN BISNIS ISLAM UIN AR-RANIRY BANDA ACEH", 
+                authors: "Haji Putra, Hendri Ahmadian", 
+                year: 2018,
+                url: "https://drive.google.com/file/d/1-AKhxfZk7J34fBJeFM-0Jrf5kvzUx2D5/view?usp=drive_link"
+            },
+            { 
+                title: "Penerapan Problem Based Learning Untuk Meningkatkan Hasil Belajar Peserta Didik Pada Mata Pelajaran Elektronika Mikroprosesor Di Kelas X SMK Negeri 5 Telkom", 
+                authors: "Malahayati, Hadi Kurniawan, Rahmatul Ummiya, Nurhayati", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/1-iiyEnKJiK1037s1cO18PTt-duvh0Vgn/view?usp=drive_link"
+            },
+            { 
+                title: "Pengukuran Radiasi Kalor pada Beberapa Bohlam yang Berbeda Warna", 
+                authors: "Nurhayati, Fitra Saputra, Anjar Purba Asmara, Malahayati", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/1-J5az1Q0T8UV0As5ddcSA0mySgddqv3l/view?usp=drive_link"
+            },
+            { 
+                title: "IMPLEMENTASI SISTEM INFORMASI PENDUKUNG AKREDITASI BERBASIS WEB PADA PRODI TEKNOLOGI INFORMASI UIN AR-RANIRY", 
+                authors: "Hendri Ahmadian, Ima Dwitawati, Malahayati", 
+                year: 2019,
+                url: "https://drive.google.com/file/d/1-OFXfFXrH9zpcusfmYN3hvNkRJs6k0jo/view?usp=drive_link"
+            }
+        ];
+    
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                filterPublications();
+            }
+        });
+        function filterPublications() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredPublications = publications.filter(pub => 
+                pub.title.toLowerCase().includes(query) ||
+                pub.authors.toLowerCase().includes(query)
+            );
+            renderPublications(filteredPublications);
+        }
+    
+        function renderPublications(list) {
+            const container = document.getElementById('publicationList');
+            container.innerHTML = ''; // Clear existing content
+            list.sort((a, b) => b.year - a.year); // Sort by year descending
+            list.forEach(pub => {
+                const pubDiv = document.createElement('div');
+                pubDiv.className = 'publication-item';
+                pubDiv.innerHTML = `
+                    <h2><a href="${pub.url}" target="_blank" style="text-decoration: none; color: #0f766e;">${pub.title}</a></h2>
+                    <p>${pub.authors}</p>
+                    <p><strong>${pub.year}</strong></p>
+                `;
+                container.appendChild(pubDiv);
+            });
+        }
+    
+        // Initial rendering
+        renderPublications(publications);
+    </script>
+    
+</body>
+</html>

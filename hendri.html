@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publikasi Dosen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h1, header h2 {
+            margin: 0;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #0f766e;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-bar button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+        }
+        .publication-list {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .publication-item {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .publication-item h2 {
+            font-size: 16px;
+            margin: 0 0 5px 0;
+        }
+        .publication-item p {
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logoUIN.png" alt="University Logo">
+                <div>
+                    <h1>PRODI TEKNOLOGI INFORMASI</h1>
+                    <h2>FAKULTAS SAINS DAN TEKNOLOGI</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <nav style="margin-bottom: 10px;">
+            <a href="index.html" style="text-decoration: none; color: #000;">Home</a> 
+            <span style="color: #000;">/</span> 
+            <a href="pub_dosen.html" style="text-decoration: none; color: #000;">Publikasi Dosen</a>
+        </nav>
+        <h1><a href="hendri.html" style="text-decoration: none; color: inherit;">Hendri Ahmadian, S.Si., M.IM</a></h1>
+        <div class="search-bar">
+            <input id="searchInput" type="text" placeholder="Search by title or author...">
+            <button onclick="filterPublications()"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="publicationList" class="publication-list">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </main>
+    <script>
+        const publications = [
+            { 
+                title: "PERANCANGAN GAME EDUKASI MATERI SISTEM TATA SURYA", 
+                authors: "Derio Balanof, Hendri Ahmadian, Basrul Abdul Majid", 
+                year: 2022,
+                url: "https://drive.google.com/file/d/1-CVviwviDR1M6yNmWaQtPx63S7dHwzOY/view?usp=drive_link"
+            },
+            { 
+                title: "Perancangan Sistem Pengendalian Perangkat Listrik Rumah Tangga Berbasis Radio Frekuensi YS1020UB dan Mikrokontroler ATMEGA16", 
+                authors: "Dedi Satria, Hendri Ahmadian", 
+                year: 2016,
+                url: "https://drive.google.com/file/d/1-JkaoFIb8ESu92tOsssg1-zwuiYdFoqj/view?usp=drive_link"
+            },
+            { 
+                title: "PENERAPAN APLIKASI KAMUS EKONOMI SYARI’AH BERBASIS ANDROID STUDI KASUS DI FAKULTAS EKONOMI DAN BISNIS ISLAM UIN AR-RANIRY BANDA ACEH", 
+                authors: "Haji Putra, Hendri Ahmadian", 
+                year: 2018,
+                url: "https://drive.google.com/file/d/1-AKhxfZk7J34fBJeFM-0Jrf5kvzUx2D5/view?usp=drive_link"
+            },
+            { 
+                title: "Faktor-Faktor yang Mempengaruhi Tindakan Knowledge Sharing Antara Dosen di Perguruan Tinggi Keagamaan Islam (PTKI) Studi Kasus: UIN Ar-Raniry Banda Aceh dan STAIN Tengku …", 
+                authors: "AR Khairan", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1qg3nvW70QD6WonCRjdDRlXGsKhDbxMDv/view?usp=drive_link"
+            },
+            { 
+                title: "Perancangan Aplikasi E-Modul Berbasis Android untuk Pelajaran Animasi 2D dan 3D", 
+                authors: "Rahmad Surya, Hendri Ahmadian, Ridwan Ridwan, AR Khairan, Sri Wahyuni, Bustami Bustami", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1t-vQDs5CyM6o9TISKPiWsnH0rrajK2kl/view?usp=drive_link"
+            },
+            { 
+                title: "PENERAPAN ALGORITMA KNUTH-MORRIS-PRATT PADA FITUR PENCARIAN DEFINISI ISTILAH STANDAR OPERASIONAL PROSEDUR (SOP) PADA LEMBAGA PENJAMINAN MUTU UIN AR-RANIRY", 
+                authors: "Khairan AR, Hendri Ahmadian", 
+                year: 2019,
+                url: "https://drive.google.com/file/d/1-Y-AlgInnMrkQCZ65EIBoofPCCNA0XRz/view?usp=drive_link"
+            },
+            { 
+                title: "IMPLEMENTASI SISTEM INFORMASI PENDUKUNG AKREDITASI BERBASIS WEB PADA PRODI TEKNOLOGI INFORMASI UIN AR-RANIRY", 
+                authors: "Hendri Ahmadian, Ima Dwitawati, Malahayati", 
+                year: 2019,
+                url: "https://drive.google.com/file/d/1-OFXfFXrH9zpcusfmYN3hvNkRJs6k0jo/view?usp=drive_link"
+            },
+            { 
+                title: "Overview Of Pirated Software On Campus: Educators' Perspective", 
+                authors: "Basrul, Hendri Ahmadian", 
+                year: 2020,
+                url: "https://drive.google.com/file/d/1-DJCNouvREv3vNtWoylvreUQDutMLikg/view?usp=drive_link"
+            },
+            { 
+                title: "PENGARUH TAHAPAN PREPROCESSING TERHADAP MODEL INDOBERT DAN INDOBERTWEET UNTUK MENDETEKSI EMOSI PADA KOMENTAR AKUN BERITA INSTAGRAM", 
+                authors: "Ulfia Khairani, Viska Mutiawani, Hendri Ahmadian", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1-9iYZ72nP_42fP744q2fCRjs3agfEgtG/view?usp=drive_link"
+            },
+            { 
+                title: "Sistem Informasi E-Laboratory Berbasis Web Pada Laboratorium Multifungsi UIN Ar-Raniry Banda Aceh", 
+                authors: "Nurahla, Hendri Ahmadian, Rahmat Musfikar", 
+                year: 2020,
+                url: "https://drive.google.com/file/d/1-7TQxeuHW6yghPf22czFTTaVARnvMGgl/view?usp=drive_link"
+            } 
+        ];
+    
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                filterPublications();
+            }
+        });
+        function filterPublications() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredPublications = publications.filter(pub => 
+                pub.title.toLowerCase().includes(query) ||
+                pub.authors.toLowerCase().includes(query)
+            );
+            renderPublications(filteredPublications);
+        }
+    
+        function renderPublications(list) {
+            const container = document.getElementById('publicationList');
+            container.innerHTML = ''; // Clear existing content
+            list.sort((a, b) => b.year - a.year); // Sort by year descending
+            list.forEach(pub => {
+                const pubDiv = document.createElement('div');
+                pubDiv.className = 'publication-item';
+                pubDiv.innerHTML = `
+                    <h2><a href="${pub.url}" target="_blank" style="text-decoration: none; color: #0f766e;">${pub.title}</a></h2>
+                    <p>${pub.authors}</p>
+                    <p><strong>${pub.year}</strong></p>
+                `;
+                container.appendChild(pubDiv);
+            });
+        }
+    
+        // Initial rendering
+        renderPublications(publications);
+    </script>
+    
+</body>
+</html>

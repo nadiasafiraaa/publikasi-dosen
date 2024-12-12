@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publikasi Dosen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h1, header h2 {
+            margin: 0;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #0f766e;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-bar button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+        }
+        .publication-list {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .publication-item {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .publication-item h2 {
+            font-size: 16px;
+            margin: 0 0 5px 0;
+        }
+        .publication-item p {
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logoUIN.png" alt="University Logo">
+                <div>
+                    <h1>PRODI TEKNOLOGI INFORMASI</h1>
+                    <h2>FAKULTAS SAINS DAN TEKNOLOGI</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <nav style="margin-bottom: 10px;">
+            <a href="index.html" style="text-decoration: none; color: #000;">Home</a> 
+            <span style="color: #000;">/</span> 
+            <a href="pub_dosen.html" style="text-decoration: none; color: #000;">Publikasi Dosen</a>
+        </nav>
+        <h1><a href="khairan.html" style="text-decoration: none; color: inherit;">Khairan AR, M.Kom</a></h1>
+        <div class="search-bar">
+            <input id="searchInput" type="text" placeholder="Search by title or author...">
+            <button onclick="filterPublications()"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="publicationList" class="publication-list">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </main>
+    <script>
+        const publications = [
+            { 
+                title: "ANALISIS LAYANAN KENAIKAN JABATAN FUNGSIONAL DOSEN UIN AR-RANIRY BANDA ACEH", 
+                authors: "AR Khairan, Fransisca Tassia, Raihana Ramadhanulita Nst, Icha Widya, Khairun Ardiansyah", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/17nii-UFst_8yMX-ay62286MZs9Myv5g1/view?usp=drive_link"
+            },
+            { 
+                title: "PERANCANGAN SISTEM INFORMASI KULIAH KERJA PRAKTIK BERBASIS WEBSITE", 
+                authors: "AR Khairan, Nazaruddin Ahmad, Arifiyanto Hadinegoro, Syauqi Ikramillah", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1NkSFOSCKSzfYxSEIk2EbkhCGTVMYKQB5/view?usp=drive_link"
+            },
+            { 
+                title: "Pengembangan Modul Praktikum Interaktif Menggunakan Aplikasi Kotobee", 
+                authors: "Cut Nursafira, Basrul Abdul Majid, AR Khairan", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1hb52RmmQkx4I2D59b4hMKKhwi_OrptYt/view?usp=drive_link"
+            },
+            { 
+                title: "Faktor-Faktor yang Mempengaruhi Tindakan Knowledge Sharing Antara Dosen di Perguruan Tinggi Keagamaan Islam (PTKI) Studi Kasus: UIN Ar-Raniry Banda Aceh dan STAIN Tengku …", 
+                authors: "AR Khairan", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1qg3nvW70QD6WonCRjdDRlXGsKhDbxMDv/view?usp=drive_link"
+            },
+            { 
+                title: "Perancangan Aplikasi E-Modul Berbasis Android untuk Pelajaran Animasi 2D dan 3D", 
+                authors: "Rahmad Surya, Hendri Ahmadian, Ridwan Ridwan, AR Khairan, Sri Wahyuni, Bustami Bustami", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1t-vQDs5CyM6o9TISKPiWsnH0rrajK2kl/view?usp=drive_link"
+            },
+            { 
+                title: "Knowledge Sharing antara Tenaga Pendidik Perguruan Tinggi Keagamaan Islam (PTKI)", 
+                authors: "AR Khairan, Nazaruddin Ahmad", 
+                year: 2022,
+                url: "https://drive.google.com/file/d/1fKgWhNEgGueqrbUwnbmODk0qxikOUI_I/view?usp=drive_link"
+            },
+            { 
+                title: "SISTEM INFORMASI ASET SEKOLAH BERBASIS WEBSITE PADA SMK NEGERI 4 BANDA ACEH", 
+                authors: "Nabila Razani, AR Khairan, Rahmat Musfikar", 
+                year: 2022,
+                url: "https://drive.google.com/file/d/1LadDpKszoMgUdEe9s__jb169oz0Kvrau/view?usp=drive_link"
+            },
+            { 
+                title: "Pengukuran Kualitas Penggunaan Website Sistem Pakar Diagnosa Awal Mental Illness Psikosis Dengan Metode WebQual", 
+                authors: "AR Khairan, Rahmat Musfikar, Robbi Amanda Ilham, Bustami Yusuf", 
+                year: 2022,
+                url: "https://drive.google.com/file/d/1wcarxShSN7ugZd_79zqtYy6IVOdf1Rci/view?usp=drive_link"
+            },
+            { 
+                title: "Factors of Knowledge Sharing Between Students Faculty of Education and Teacher Training Uin Ar-Raniry Banda Aceh", 
+                authors: "AR Khairan, Misa Rahma Yanti, Nazaruddin Ahmad", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/1509SGxT0V_IdeX3sHEDIyzNvK5fr3w0N/view?usp=drive_link"
+            },
+            { 
+                title: "Analisis Implementasi Aplikasi Pembelajaran Interaktif Calistung Dengan Pendekatan Technology Acceptance Model", 
+                authors: "AR Khairan, Ridwan Ridwan, Hidayatus Saidah", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/10Ayql4NX2vs_6JfrfWUOtY0sa0riZ_Xq/view?usp=drive_link"
+            },
+            { 
+                title: "Peningkatan Aktivitas Dan Hasil Belajar Siswa Pada SMP N 1 Bakongan Dengan Tutor Sebaya", 
+                authors: "AR Khairan, Erlina Sari, Bustami Yusuf, Andika Prajana", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/1geEtcp4pwGf7BZpFTZtRrLL6PlXye7DL/view?usp=drive_link"
+            },
+            { 
+                title: "Penerapan metode jigsaw II terhadap peningkatan keaktifan belajar siswa SMK Darul Ihsan", 
+                authors: "Khairunnas Khairunnas, AR Khairan, Mira Maisura, Malahayati Malahayati", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/1GkV4dF3ip30_pjjYPRo50M04dVouaA8C/view?usp=drive_link"
+            },
+            { 
+                title: "Gerakan komunitas aceh go open source sebagai upaya pengendalian produk halal berbasis teknologi informasi pada Madrasah Aliyah Banda Aceh dan Aceh Besar", 
+                authors: "Andika Prajana, AR Khairan, Hendri Ahmadian, Hendy Mizuardy", 
+                year: 2020,
+                url: "https://drive.google.com/file/d/1AiXly9XJh6f72wALHmF1YiJnKPcNGbft/view?usp=drive_link"
+            },
+            { 
+                title: "Penerapan Metode National Institute of Standars and Technology (Nist) Dalam Analisis Forensik Digital Untuk Penanganan Cyber Crime", 
+                authors: "Mulia Fitriana, AR Khairan, Jiwa Malem Marsya", 
+                year: 2020,
+                url: "https://drive.google.com/file/d/1skZHkIjmf5ivpPgJSQwEev6oIE5I5Dyb/view?usp=drive_link"
+            },
+            { 
+                title: "Rancang Bangun Game Edukatif “Muslimah Adventure” sebagai Media Dakwah Memanfaatkan Aplikasi Scratch 2.0", 
+                authors: "AR Khairan, Resi Rizki Nanda, Andika Prajana, Mulyadi Abdul Wahid", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/15ZlrSImVNS560CmnirsmbdQbl4d5oTLq/view?usp=drive_link"
+            },    
+        ];
+    
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                filterPublications();
+            }
+        });
+        function filterPublications() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredPublications = publications.filter(pub => 
+                pub.title.toLowerCase().includes(query) ||
+                pub.authors.toLowerCase().includes(query)
+            );
+            renderPublications(filteredPublications);
+        }
+    
+        function renderPublications(list) {
+            const container = document.getElementById('publicationList');
+            container.innerHTML = ''; // Clear existing content
+            list.sort((a, b) => b.year - a.year); // Sort by year descending
+            list.forEach(pub => {
+                const pubDiv = document.createElement('div');
+                pubDiv.className = 'publication-item';
+                pubDiv.innerHTML = `
+                    <h2><a href="${pub.url}" target="_blank" style="text-decoration: none; color: #0f766e;">${pub.title}</a></h2>
+                    <p>${pub.authors}</p>
+                    <p><strong>${pub.year}</strong></p>
+                `;
+                container.appendChild(pubDiv);
+            });
+        }
+    
+        // Initial rendering
+        renderPublications(publications);
+    </script>
+    
+</body>
+</html>

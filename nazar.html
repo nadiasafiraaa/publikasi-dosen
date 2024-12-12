@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publikasi Dosen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h1, header h2 {
+            margin: 0;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #0f766e;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-bar button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+        }
+        .publication-list {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .publication-item {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .publication-item h2 {
+            font-size: 16px;
+            margin: 0 0 5px 0;
+        }
+        .publication-item p {
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logoUIN.png" alt="University Logo">
+                <div>
+                    <h1>PRODI TEKNOLOGI INFORMASI</h1>
+                    <h2>FAKULTAS SAINS DAN TEKNOLOGI</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <nav style="margin-bottom: 10px;">
+            <a href="index.html" style="text-decoration: none; color: #000;">Home</a> 
+            <span style="color: #000;">/</span> 
+            <a href="pub_dosen.html" style="text-decoration: none; color: #000;">Publikasi Dosen</a>
+        </nav>
+        <h1><a href="nazar.html" style="text-decoration: none; color: inherit;">Nazaruddin Ahmad, M.T</a></h1>
+        <div class="search-bar">
+            <input id="searchInput" type="text" placeholder="Search by title or author...">
+            <button onclick="filterPublications()"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="publicationList" class="publication-list">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </main>
+    <script>
+        const publications = [
+            {
+                title: "SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN MAHASISWA LULUSAN TERBAIK DENGAN METODE AHP (ANALYTICAL HIERARCHY PROCESS)(Studi Kasus: Prodi Pendidikan Teknologi Informasi UIN Ar-Raniry …", 
+                authors: "Nazaruddin Ahmad, Ulya Nuruddhafirah, Putri Salsabila, Izzatul Rahmadhani", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1fsrp40telceABK-0653lZ5pepfxZhP4O/view?usp=drive_link"
+            },
+            {
+                title: "BUKU AJAR SISTEM MANAJEMEN BASIS DATA", 
+                authors: "Nazaruddin Ahmad, Raihana Ramadhanulita Nst", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1f9J6p73fQt4SvL7O7pq3qoLBeJTQGkJL/view?usp=drive_link"
+            },
+            {
+                title: "Dasar Pemrograman Web", 
+                authors: "Nazaruddin Ahmad, Tati Haryati, Melda Agnes Manuhutu, Guntoro Barovih, Ircham Ali, Siti Madinah Ladjamuddin, Dipa Teruna Awaludin, Mohammad Reza Fahlevi, Andi Aljabar, Ridho Pamungkas, Arifin A Abd Karim", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1fdJHR8gtJ2B-sRebOb0XWpeHmCHiPkNO/view?usp=drive_link"
+            },
+            {
+                title: "Perancangan Sistem Informasi Buku Tamu Berbasis Web Pada Kantor Kementerian Hukum dan Hak Asasi Manusia Banda Aceh", 
+                authors: "Icha Widya Pratiwi, Nazaruddin Ahmad, Arifiyanto Hadinegoro, Saifan Hafizh, Rana Sulthanah", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1dPoUxLIoG923qafLyVhxpWI-fBFH19Ip/view?usp=drive_link"
+            },
+            {
+                title: "Prediksi Kelulusan Mata Kuliah Mahasiswa Teknologi Informasi Menggunakan Algoritma K-Nearest Neighbor", 
+                authors: "Nazaruddin Ahmad, Saifan Hafizh, Rana Sulthanah", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1TZz6fGDCjvYYoyQmHA3ElSFzG1i3yv-R/view?usp=drive_link"
+            },
+            {
+                title: "Design and development of child monitoring track bag using arduino", 
+                authors: "Arifiyanto Hadinegoro, Faris Fathahillah Herman, Subektiningsih Subektiningsih, Nazaruddin Ahmad", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1jfvxURWGJH-p1BlKH0qazTIit1vl3Sx7/view?usp=drive_link"
+            },
+            {
+                title: "Pelatihan Pembelajaran Menggunakan Augmented Reality bagi Kepala sekolah/Guru", 
+                authors: "Nazaruddin Ahmad", 
+                year: 2024,
+                url: "https://drive.google.com/file/d/1-GVyzH-vhKqRRAPfaOSaJgi91FLOkPBo/view?usp=drive_link"
+            },
+            { 
+                title: "Meningkatkan Akses Pendidikan Berkualitas Melalui Program Pengabdian Masyarakat di Provinsi Jawa Tengah:Pendekatan Inklusif dan Berbasis Teknologi", 
+                authors: "Fatimah Nur Arifah,Sabil Mokodenseho, Nazaruddin Ahmad, Ira Wulan Sari, Fatma Panu, Sarah Pobela, Fahmi Hafiz Munandar Maku", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/100UZhj4ciAkoOwLBd6Qf-M4Tw_Tk9hgq/view?usp=drive_link"
+            },
+            { 
+                title: "Designing an E-Recruitment Information System Using Simple Additive Weighting Method for Employee Recruitment in Banking Industry", 
+                authors: "Dendy K Pramudito1, Nazaruddin Ahmad, Rizki Suwanda, Muhammad Zakaria, Loso Judijanto", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1051xmwxUvJTtMwjgOOAttPObv2FWKTKk/view?usp=drive_link"
+            },
+            { 
+                title: "Ethical Leadership in Information Technology Decision Making and its Impact on Risk Management", 
+                authors: "Purwo Agus Sucipto, Maria Jashinta Elisabet Hamboer, Nazaruddin Ahmad, Zakaria Satrio Darmawan, Filda Angellia", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1-K1vZL1vXluh9-l6WPvItThcZBRMGw3i/view?usp=drive_link"
+            },
+            { 
+                title: "PENGEMBANGAN APLIKASI E-LEARNING DENGAN FITUR INTERAKTIF DAN ADAPTIVE LEARNING", 
+                authors: "Andy Rachman, Oktafian Farhan, Nazaruddin Ahmad, Trisna Rukhmana, Dadang Muhamma, Hasyim, Erwin Dhaniswara", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1-lhOeWA8e4aiWw5DaUFqxs5ldOlOY8fv/view?usp=drive_link"
+            },
+            { 
+                title: "Konsep Dasar ICT Dalam Aplikasi Sistem Komputer dan Layanan Internet", 
+                authors: "Rinanda Febriani, Rizki Dewantara, Kraugusteeliana, Alfry Aristo Jansen Sinlae, Widiyawati, Nazaruddin Ahmad, Maya Ariyanti, Satria, Sulistianto SW, Zufri Hasrudy Siregar, Adi Widarma, Vera Wati, Ferdinandus Lidang Witi.", 
+                year: 2023,
+                url: "https://drive.google.com/file/d/1-poemUfqVOBJxgrNdkcVLJojQ9pjnHZj/view?usp=drive_link"
+            },
+            { 
+                title: "Analisa & Perancangan Sistem Informasi Berorientasi Objek", 
+                authors: "Nazaruddin Ahmad, Erly Krisnanik, Frits Gerit John Rupilele, Anita Muliawati, Nur Syamsiyah, Kraugusteeliana, Bagus Dwi Cahyono, Yesi Sriyeni, Titus Kristanto, Irwanto, Guntoro.", 
+                year: 2022,
+                url: "https://drive.google.com/file/d/1-GVyzH-vhKqRRAPfaOSaJgi91FLOkPBo/view?usp=drive_link"
+            },
+            { 
+                title: "Rekayasa Perangkat Lunak", 
+                authors: "Widiyawati, Nazaruddin Ahmad, Eka Hartati, Erly Krisnanik, Yuniansyah, Yunita Ardilla, Iin Ernawati, Guntoro, Kraugusteeliana, I Wayan Widi Pradnyana, Titus Kristanto, D Tri Octafian, Irwanto.", 
+                year: 2022,
+                url: "https://drive.google.com/file/d/1-jkEbggdpm5Ey9xWTFmU_hQ0IifD8Bkk/view?usp=drive_link"
+            },
+            { 
+                title: "FACTORS OF KNOWLEDGE SHARING BETWEEN STUDENTS FACULTY OF EDUCATION AND TEACHER TRAINING UIN AR-RANIRY BANDA ACEH", 
+                authors: "Khairan AR, Misa Rahma Yanti, Nazaruddin Ahmad", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/1-do2scDHmLof4EPoM-DsNWk5GH2tvYNT/view?usp=drive_link"
+            },
+            { 
+                title: "Data Mining dan Aplikasinya", 
+                authors: "Mustika, Yunita Ardilla, Abraham Manuhutu, Nazaruddin Ahmad, Imanuddin Hasbi, Guntoro, Melda Agnes Manuhutu, Mohamad Ridwan, Hozairi, Anindya Khrisna Wardhani, Syariful Alim, Ikhsan Romli, Yoga Religia, D Tri Octafian, Unggul Utan Sufandi & Iin Ernawati.", 
+                year: 2021,
+                url: "https://drive.google.com/file/d/100uafcyer_q2rkqN7y4iiNyLR5DW8sI-/view?usp=drive_link"
+            },
+            { 
+                title: "Metode Forward Chaining untuk Deteksi Penyakit Pada Tanaman Kentang", 
+                authors: "Nazaruddin Ahmad, Iskandar", 
+                year: 2020,
+                url: "https://drive.google.com/file/d/107Bm-LNsMytbCE8NziSXcHcKK23NpjMf/view?usp=drive_link"
+            },
+            {
+                title: "METODE HISTOGRAM EQUALIZATION UNTUK PERBAIKAN CITRA DIGITAL", 
+                authors: "Nazaruddin Ahmad, Arifyanto Hadinegoro", 
+                year: 2012,
+                url: "https://drive.google.com/file/d/1-A2E_Mf51AvEi3MJx6IdJ6swf1sQ9fyq/view?usp=drive_link"
+            }
+        ];
+    
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                filterPublications();
+            }
+        });
+        function filterPublications() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredPublications = publications.filter(pub => 
+                pub.title.toLowerCase().includes(query) ||
+                pub.authors.toLowerCase().includes(query)
+            );
+            renderPublications(filteredPublications);
+        }
+    
+        function renderPublications(list) {
+            const container = document.getElementById('publicationList');
+            container.innerHTML = ''; // Clear existing content
+            list.sort((a, b) => b.year - a.year); // Sort by year descending
+            list.forEach(pub => {
+                const pubDiv = document.createElement('div');
+                pubDiv.className = 'publication-item';
+                pubDiv.innerHTML = `
+                    <h2><a href="${pub.url}" target="_blank" style="text-decoration: none; color: #0f766e;">${pub.title}</a></h2>
+                    <p>${pub.authors}</p>
+                    <p><strong>${pub.year}</strong></p>
+                `;
+                container.appendChild(pubDiv);
+            });
+        }
+    
+        // Initial rendering
+        renderPublications(publications);
+    </script>
+    
+</body>
+</html>
